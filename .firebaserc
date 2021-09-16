@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "saladejuegos-mclifton": {
+      "hosting": {
+        "saladejuegos": [
+          "saladejuegos-mclifton"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+
+      <!-- Login Form -->
+      <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <label for="email"></label>
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email" formControlName="email">
+        <label for="password"></label>
+        <input type="text" id="password" class="fadeIn third" name="password" placeholder="Contraseña" formControlName="password">
+        <label for="password2"></label>
+        <input type="text" id="password2" class="fadeIn third" name="password2" placeholder="Repetir contraseña" formControlName="password2">
+
+        <input type="submit" class="fadeIn fourth" value="Crear Usuario">
+      </form>
+  
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Logueate</a>
+      </div>
+    </div>
+  </div>
