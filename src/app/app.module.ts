@@ -6,12 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { QuiensoyComponent } from './quiensoy/quiensoy.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
+import { AhorcadoComponent } from './juegos/ahorcado/ahorcado.component';
+import { MayormenorComponent } from './juegos/mayormenor/mayormenor.component';
 
 
 @NgModule({
@@ -20,12 +22,15 @@ import { environment } from 'src/environments/environment';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    QuiensoyComponent
+    QuiensoyComponent,
+    AhorcadoComponent,
+    MayormenorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule
   ],
