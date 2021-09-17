@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 //import { toast } from '../../toast';
 
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
   })
   alert=false;
 
-  constructor(private authSvc:AuthService) { }
+  constructor(private authSvc:AuthService,  private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -39,7 +40,7 @@ export class RegisterComponent implements OnInit {
     this.authSvc.register(email,password)
     .then(res =>{
       console.log(res)
-      window.location.href = './home';
+      this.router.navigate(['/home'])
     })
     .catch(err =>{
       console.log('error en alta', err)

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {FormGroup, FormControl} from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -9,32 +11,43 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  userExist:any;
+
   loginForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')
   })
 
-  constructor(private authSvc:AuthService ) { }
+  constructor(private authSvc:AuthService, private router:Router, public afAuth: AngularFireAuth ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+
+    this.userExist = await this.afAuth.onAuthStateChanged(user =>{
+      if(user){
+        console.log(user)
+        this.router.navigate(['/home'])
+      }
+  })
+     
+
   }
-  onLogin(){
-   // console.log('Form->', this.loginForm.value)
+
+  async onLogin(){
+
    const {email, password} = this.loginForm.value;
    if(email == '' || password == ''){
      console.log("FALTAN DATOS");
      return;
    }
 
-    this.authSvc.login(email,password)
-    .then(res =>{
-      if(res){
-        console.log("LOGIN CORRECTO")
-      }else{
-        console.log("ERROR DE LOGIN")
+   try {
+    const user = await this.authSvc.login(email,password)
+      if(user){
+        this.router.navigate(['/home'])
       }
-    })
-
+   } catch (error) {
+     console.log(error);
+   }
     
   }
 

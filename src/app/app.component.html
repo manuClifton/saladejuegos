@@ -26,11 +26,17 @@
      <a routerLink="/home" class="navbar-brand">
        <strong>Manuel</strong> Clifton
      </a>
- 
+     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#menu-principal" aria-controls="menu-principal" aria-expanded="false" aria-label="Desplegar menu de navegacion">
+      <span class="navbar-toggler-icon"></span>
+    </button>
      <div class="collapse navbar-collapse" id="menu-principal">
        <ul class="navbar-nav ml-auto">
-         <li class="nav-item"><a routerLink="/login"class="nav-link active" data-target="login">Login</a></li>
-         <li class="nav-item"><a routerLink="/register" class="nav-link " data-target="registro">Registrarse</a></li>
+         <li *ngIf="!isLogged" class="nav-item"><a routerLink="/login"class="nav-link active" data-target="login">Login</a></li>
+         <li *ngIf="isLogged" (click)="onLogout()" class="nav-item"><a routerLink="/home"class="nav-link active" data-target="login">Log Out</a></li>
+         <li *ngIf="user"  class="nav-item"><a class="nav-link " data-target="email">
+          {{user.email}}</a>
+        </li>
+         <li *ngIf="!isLogged"  class="nav-item"><a routerLink="/register" class="nav-link " data-target="registro">Registrarse</a></li>
          <li class="nav-item"><a  routerLink="/quien-soy" class="nav-link " data-target="quiensoy">Quien soy</a></li>
        </ul>
      </div>

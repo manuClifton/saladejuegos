@@ -9,15 +9,18 @@ import { Auth,User,getAuth, createUserWithEmailAndPassword, signInWithEmailAndPa
 })
 export class AuthService {
 
- // public user: User;
-
-  constructor(public afAuth: AngularFireAuth) { }
+  constructor(public afAuth: AngularFireAuth) {}
 
   async login(email:string, password:string){
     const auth = getAuth();
     try {
       const res = await this.afAuth.signInWithEmailAndPassword(email,password)
-      return true;
+      if(res){
+        return res;
+      }else{
+        return false;
+      }
+     
     } catch (error) {
 
       return false;
@@ -46,18 +49,19 @@ export class AuthService {
   }
 
   async getCurrentUser(){
-    try {
-      return this.afAuth.authState.pipe(first()).toPromise();
-    } catch (error) {
-      console.log(error);
-      return error;
-    }
+
+    const unsuscrive = await this.afAuth.onAuthStateChanged(user =>{
+        if(user){
+          //console.log(user)
+          return true;
+        }else{
+
+          return false;
+        }
+    })
+
   }
 
 
 }//
-
-function first(): import("rxjs").OperatorFunction<import("firebase/compat").default.User | null, unknown> {
-  throw new Error('Function not implemented.');
-}
 
