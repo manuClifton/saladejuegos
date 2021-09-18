@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {FormGroup, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -43,6 +44,13 @@ export class LoginComponent implements OnInit {
    try {
     const user = await this.authSvc.login(email,password)
       if(user){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Acceso correcto',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.router.navigate(['/home'])
       }
    } catch (error) {
