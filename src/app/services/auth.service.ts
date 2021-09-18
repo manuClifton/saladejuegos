@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import * as firebase from "firebase/app"
+//import * as firebase from "firebase/app"
 import { Auth,User,getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateCurrentUser, signOut } from 'firebase/auth';
 //import {first} from 'rxjs/operators';
 @Injectable({
