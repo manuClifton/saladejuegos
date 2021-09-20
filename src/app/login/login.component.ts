@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import {FormGroup, FormControl} from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import Swal from 'sweetalert2';
@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
   userExist:any;
 
   loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
+    email: new FormControl('',Validators.required),
+    password: new FormControl('', Validators.min(6))
   })
 
   constructor(private authSvc:AuthService, private router:Router, public afAuth: AngularFireAuth ) { }
@@ -54,9 +54,15 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home'])
       }
    } catch (error) {
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'Error de Ingreso',
+      showConfirmButton: false,
+      timer: 1500
+    })
      console.log(error);
    }
-    
   }
 
 

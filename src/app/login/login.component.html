@@ -3,7 +3,10 @@
     <div id="formContent">
       <!-- Login Form -->
       <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email" formControlName="email">
+        <input type="text" id="login" class="fadeIn second"
+               name="login" placeholder="Email"
+               
+                formControlName="email">
         <input type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña" formControlName="password">
         <input type="submit" class="fadeIn fourth" value="Entrar">
       </form>

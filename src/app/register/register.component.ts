@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth.service';
 //import { toast } from '../../toast';
 
@@ -39,10 +40,23 @@ export class RegisterComponent implements OnInit {
 
     this.authSvc.register(email,password)
     .then(res =>{
-      console.log(res)
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Usuario Creado correcto',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.router.navigate(['/home'])
     })
     .catch(err =>{
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Error al crear',
+        showConfirmButton: false,
+        timer: 1500
+      })
       console.log('error en alta', err)
     })
 

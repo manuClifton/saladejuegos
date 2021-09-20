@@ -14,6 +14,7 @@ import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
 import { AhorcadoComponent } from './juegos/ahorcado/ahorcado.component';
 import { MayormenorComponent } from './juegos/mayormenor/mayormenor.component';
+import { PreguntadosComponent } from './juegos/preguntados/preguntados.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { MayormenorComponent } from './juegos/mayormenor/mayormenor.component';
     HomeComponent,
     QuiensoyComponent,
     AhorcadoComponent,
-    MayormenorComponent
+    MayormenorComponent,
+    PreguntadosComponent
   ],
   imports: [
     BrowserModule,

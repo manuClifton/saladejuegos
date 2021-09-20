@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -7,7 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./ahorcado.component.css']
 })
 export class AhorcadoComponent implements OnInit {
-
+  user:any;
   flag = true;
   contFallas = 0;
   palabra = '';
@@ -28,17 +30,28 @@ export class AhorcadoComponent implements OnInit {
               "escritorio","boca","cabeza","zatato","camisa","pantalon","mochila","barbijo","electricidad"];
   
 
-  constructor() { }
+  constructor(public afAuth: AngularFireAuth,private router:Router) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+
+    this.user = await this.afAuth.onAuthStateChanged(user =>{
+      if(!user){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'warning',
+          title: 'Ingresa tu usuario',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        this.router.navigate(['/login'])
+        }
+    })
     this.actualizarPalabrta();
     this.crearGuiones()
   }
 
   
   verificar(){
-
-      alert(this.palabra)
       for (let i = 0; i < this.palabra.length; i++) { 
         if(this.palabra[i] == this.letra){
           this.guiones = this.replaceAt(i*2, this.letra, this.guiones);
