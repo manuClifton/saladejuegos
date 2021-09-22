@@ -12,17 +12,21 @@
 
 
        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a  routerLink="/quien-soy" class="nav-link " data-target="quiensoy">Quien soy</a></li>
-        <li *ngIf="!isLogged" class="nav-item">
+        <li class="nav-item">
+          <a  routerLink="/quien-soy" class="nav-link " data-target="quiensoy">Quien soy</a>
+        </li>
+        <li *ngIf="!isLogged" class="nav-link">
           <a routerLink="/login"class="nav-link active" data-target="login">Login</a>
         </li>
-        <li *ngIf="isLogged"  (click)="onLogout()" class="nav-item">
+        <li *ngIf="isLogged"  (click)="onLogout()" class="nav-link">
           <a routerLink="/home"class="nav-link active" data-target="login">Log Out</a>
         </li>
-        <li *ngIf="user"  class="nav-item"><a class="nav-link " data-target="email">
-          {{user.email}}</a>
+        <li *ngIf="user"  class="nav-link">
+          <a class="nav-link " data-target="email">{{user.email}}</a>
         </li>
-        <li *ngIf="!isLogged"  class="nav-item"><a routerLink="/register" class="nav-link " data-target="registro">Registrarse</a></li>
+        <li *ngIf="!isLogged"  class="nav-link">
+          <a routerLink="/register" class="nav-link " data-target="registro">Registrarse</a>
+        </li>
       
 
       
