@@ -1,47 +1,62 @@
 
-
-
-    <!--CREAR COMPONENT NAVBAR
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#" routerLink="/home">{{title}}</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link" aria-current="page" href="#" routerLink="/home">Home</a>
-              <a class="nav-link" routerLink="/login">Login</a>
-      
-              <a class="nav-link"   routerLink="/register">Register</a>
-              <a class="nav-link" routerLink="/quien-soy">Quien soy</a>
-            </div>
-          </div>
-        </div>
-      </nav>
--->
-
 <nav class="navbar navbar-dark bg-dark navbar-expand-md fixed-top p-1" >
   <div class="container p-1">
      <a routerLink="/home" class="navbar-brand">
        <strong>Home</strong> 
      </a>
+     
      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#menu-principal" aria-controls="menu-principal" aria-expanded="false" aria-label="Desplegar menu de navegacion">
       <span class="navbar-toggler-icon"></span>
     </button>
      <div class="collapse navbar-collapse" id="menu-principal">
-       <ul class="navbar-nav ml-auto">
-         <li *ngIf="!isLogged" class="nav-item"><a routerLink="/login"class="nav-link active" data-target="login">Login</a></li>
-         <li *ngIf="isLogged" (click)="onLogout()" class="nav-item"><a routerLink="/home"class="nav-link active" data-target="login">Log Out</a></li>
-         <li *ngIf="user"  class="nav-item"><a class="nav-link " data-target="email">
+
+
+       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a  routerLink="/quien-soy" class="nav-link " data-target="quiensoy">Quien soy</a></li>
+        <li *ngIf="!isLogged" class="nav-item">
+          <a routerLink="/login"class="nav-link active" data-target="login">Login</a>
+        </li>
+        <li *ngIf="isLogged"  (click)="onLogout()" class="nav-item">
+          <a routerLink="/home"class="nav-link active" data-target="login">Log Out</a>
+        </li>
+        <li *ngIf="user"  class="nav-item"><a class="nav-link " data-target="email">
           {{user.email}}</a>
         </li>
-         <li *ngIf="!isLogged"  class="nav-item"><a routerLink="/register" class="nav-link " data-target="registro">Registrarse</a></li>
-         <li class="nav-item"><a  routerLink="/quien-soy" class="nav-link " data-target="quiensoy">Quien soy</a></li>
-       </ul>
+        <li *ngIf="!isLogged"  class="nav-item"><a routerLink="/register" class="nav-link " data-target="registro">Registrarse</a></li>
+      
+
+      
+
+      </ul>
+
+
+
+
+
+      <form class="d-flex">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" routerLink="/login" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Acceso Rapido
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" (click)='accesoRapido(0)'>admin</a></li>
+              <li><a class="dropdown-item" (click)='accesoRapido(1)'>usuario1</a></li>
+              <li><a class="dropdown-item" (click)='accesoRapido(2)'>usuario2</a></li>
+            </ul>
+          </li>
+        </ul>
+      </form>
+
+
+
+
+       
      </div>
   </div>
 </nav>
+
+
 
 
 <div class="container mt-0">

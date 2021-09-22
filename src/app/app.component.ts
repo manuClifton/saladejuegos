@@ -11,7 +11,10 @@ export class AppComponent implements OnInit{
   public isLogged = false;
   title = 'saladejuegos';
   user: any;
-
+  admin = {
+    email: "admin@admin.com",
+    pass: "111111"
+  }
   constructor(private authSvc:AuthService, public afAuth: AngularFireAuth) { }
 
   async ngOnInit() {
@@ -33,5 +36,14 @@ export class AppComponent implements OnInit{
    this.authSvc.logout();
    this.isLogged= false;
  }
+ accesoRapido(id:number){
+  if(id == 0){
+    
+  }
+ }
+
+
+
+
 
 }//

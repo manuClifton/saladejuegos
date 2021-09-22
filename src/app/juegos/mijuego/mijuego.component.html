@@ -1,0 +1,14 @@
+
+
+    <h1 class="text-center">Mi Juego</h1>
+    <div class="card-header bg-info">
+        <h4 class="text-center">puntos:{{puntos}} / {{necesario}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tiempo: {{tiempo}} </h4>
+   </div>   
+   <div [ngStyle]="style">
+        <div (mouseover)="sumarPuntos()" [ngStyle]="stylePLayer">
+
+        </div>
+   </div>              	
+                
+            
+

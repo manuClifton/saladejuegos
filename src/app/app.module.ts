@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 import { AhorcadoComponent } from './juegos/ahorcado/ahorcado.component';
 import { MayormenorComponent } from './juegos/mayormenor/mayormenor.component';
 import { PreguntadosComponent } from './juegos/preguntados/preguntados.component';
+import { MijuegoComponent } from './juegos/mijuego/mijuego.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { PreguntadosComponent } from './juegos/preguntados/preguntados.component
     QuiensoyComponent,
     AhorcadoComponent,
     MayormenorComponent,
-    PreguntadosComponent
+    PreguntadosComponent,
+    MijuegoComponent
   ],
   imports: [
     BrowserModule,
