@@ -137,9 +137,9 @@ export class MayormenorComponent implements OnInit {
 
     nuevaCarta(){
       this.numJugador = Math.floor(Math.random()*this.cartas.length);
-      alert(this.numJugador)
+      //alert(this.numJugador)
       this.imgJugador = this.imgCartas[this.numJugador][Math.floor(Math.random()*4)];
-      alert(this.imgJugador)
+      //alert(this.imgJugador)
     }
 
 }//

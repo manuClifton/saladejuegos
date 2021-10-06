@@ -15,6 +15,9 @@
                </div>
           </div>
           <div class="col-6">
+               <div class="container">
+                    <div class="row">
+                         <div class="col-12">
                <div class="card">
                     <div class="card-header bg-warning">
                          <h4 class="text-center">TECLADO</h4>
@@ -24,48 +27,62 @@
                     </div>	
                     <div class="card-body">
                          <div class="row">
-                              <button (click)="click('a')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">A</button>
-                              <button (click)="click('b')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">B</button>
-                              <button (click)="click('c')" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">C</button>
-                              <button (click)="click('d')" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">D</button>
-                              <button (click)="click('e')" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">E</button>
-                              <button (click)="click('f')" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">F</button>
+                              <button (click)="verificar('a')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">A</button>
+                              <button (click)="verificar('b')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">B</button>
+                              <button (click)="verificar('c')" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">C</button>
+                              <button (click)="verificar('d')" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">D</button>
+                              <button (click)="verificar('e')" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">E</button>
+                              <button (click)="verificar('f')" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">F</button>
 
                          </div>
                          <div class="row">
-                              <button (click)="click('g')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">G</button>
-                              <button (click)="click('h')"  type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">H</button>
-                              <button (click)="click('i')"  type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">I</button>
-                              <button (click)="click('j')"  type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">J</button>
-                              <button  (click)="click('k')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">K</button>
-                              <button (click)="click('l')"  type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">L</button>
+                              <button (click)="verificar('g')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">G</button>
+                              <button (click)="verificar('h')"  type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">H</button>
+                              <button (click)="verificar('i')"  type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">I</button>
+                              <button (click)="verificar('j')"  type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">J</button>
+                              <button (click)="verificar('k')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">K</button>
+                              <button (click)="verificar('l')"  type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">L</button>
                          </div>
                          <div class="row">
-                              <button (click)="click('m')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">M</button>
-                              <button (click)="click('n')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">N</button>
-                              <button (click)="click('ñ')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">Ñ</button>
-                              <button (click)="click('o')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">O</button>
-                              <button (click)="click('p')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">P</button>
-                              <button (click)="click('q')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">Q</button>
+                              <button (click)="verificar('m')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">M</button>
+                              <button (click)="verificar('n')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">N</button>
+                              <button (click)="verificar('ñ')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">Ñ</button>
+                              <button (click)="verificar('o')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">O</button>
+                              <button (click)="verificar('p')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">P</button>
+                              <button (click)="verificar('q')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">Q</button>
                          </div>
                          <div class="row">
-                              <button (click)="click('r')" type="button" class="btn btn-outline-primary  col-lg-2 col-md-2 col-xs-2">R</button>
-                              <button (click)="click('s')" type="button" class="btn btn-outline-primary  col-lg-2 col-md-2 col-xs-2">S</button>
-                              <button (click)="click('t')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">T</button>
-                              <button (click)="click('u')"type="button" class="btn btn-outline-primary  col-lg-2 col-md-2 col-xs-2">U</button>
-                              <button (click)="click('v')" type="button" class="btn btn-outline-primary  col-lg-2 col-md-2 col-xs-2">V</button>
-                              <button (click)="click('w')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">W</button>
+                              <button (click)="verificar('r')" type="button" class="btn btn-outline-primary  col-lg-2 col-md-2 col-xs-2">R</button>
+                              <button (click)="verificar('s')" type="button" class="btn btn-outline-primary  col-lg-2 col-md-2 col-xs-2">S</button>
+                              <button (click)="verificar('t')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">T</button>
+                              <button (click)="verificar('u')"type="button" class="btn btn-outline-primary  col-lg-2 col-md-2 col-xs-2">U</button>
+                              <button (click)="verificar('v')" type="button" class="btn btn-outline-primary  col-lg-2 col-md-2 col-xs-2">V</button>
+                              <button (click)="verificar('w')" type="button" class="btn btn-outline-primary col-lg-2 col-md-2 col-xs-2">W</button>
                          </div>
                          <div class="row">
-                              <button (click)="click('x')" type="button" class="btn btn-outline-primary  col-lg-2 col-md-2 col-xs-2">X</button>
-                              <button (click)="click('y')" type="button" class="btn btn-outline-primary  col-lg-2 col-md-2 col-xs-2">Y</button>
-                              <button (click)="click('z')" type="button" class="btn btn-outline-primary  col-lg-2 col-md-2 col-xs-2">Z</button>
-                              <button (click)="click('')" type="button" class="btn btn-danger col-lg-3 col-md-2 col-xs-2">BORRAR</button>
-                              <button (click)="verificar()" type="button" class="btn btn-success  col-lg-3 col-md-2 col-xs-2">ENTER</button>
+                              <button (click)="verificar('x')" type="button" class="btn btn-outline-primary  col-lg-2 col-md-2 col-xs-2">X</button>
+                              <button (click)="verificar('y')" type="button" class="btn btn-outline-primary  col-lg-2 col-md-2 col-xs-2">Y</button>
+                              <button (click)="verificar('z')" type="button" class="btn btn-outline-primary  col-lg-2 col-md-2 col-xs-2">Z</button>
 
                          </div>
                     </div>
                </div>
+              </div>
+              <div class="col-12">
+               <div class="card">
+                    <div class="card-header bg-info">
+                         <h4 class="text-center">HISTORIAL</h4>
+                         <div class="input-group input-group-sm row">
+                                <span class="input-group-addon col-lg-12" id="resultado"></span>
+                           </div>
+                    </div>
+                    <div class="card-body">
+                         ACA VA EL HISTORIAL
+                    </div>   
+               </div>
+              </div>
+             </div>
+            </div>
           </div>
   
      </div>

@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthService } from './services/auth.service';
+import { UsuarioService } from './services/usuario.service';
 
 @Component({
   selector: 'app-root',
@@ -10,22 +11,30 @@ import { AuthService } from './services/auth.service';
 export class AppComponent implements OnInit{
   public isLogged = false;
   title = 'saladejuegos';
-  user: any;
+  userActual:any;
   admin = {
     email: "admin@admin.com",
     pass: "111111"
   }
-  constructor(private authSvc:AuthService, public afAuth: AngularFireAuth) { }
+  constructor(private authSvc:AuthService, public afAuth: AngularFireAuth, private userService:UsuarioService) { }
 
   async ngOnInit() {
 
-    this.user = await this.afAuth.onAuthStateChanged(user =>{
+     await this.afAuth.onAuthStateChanged(user =>{
       if(user){
-        console.log(user)
-        this.user = user;
+        this.userService.getAll('users').then(refDB=>{
+          refDB?.subscribe(refUsers=>{
+             refUsers.forEach(usuario=>{
+               this.userActual = usuario.payload.doc.data()
+                if(user.email == this.userActual.email){
+                  //console.log(this.userActual)
+                  return;
+                }
+             })
+          })
+        })
         this.isLogged = true;
       }else{
-        this.user = null;
         this.isLogged = false;
       }
   })

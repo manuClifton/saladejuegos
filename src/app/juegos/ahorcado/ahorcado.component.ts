@@ -51,7 +51,8 @@ export class AhorcadoComponent implements OnInit {
   }
 
   
-  verificar(){
+  verificar(letra:string){
+    this.letra = letra;
       for (let i = 0; i < this.palabra.length; i++) { 
         if(this.palabra[i] == this.letra){
           this.guiones = this.replaceAt(i*2, this.letra, this.guiones);
@@ -68,10 +69,7 @@ export class AhorcadoComponent implements OnInit {
         setTimeout(() => {
           this.imagen = this.imagenes[5];
         }, 1000);
-         
-     
-       
-       
+        
         Swal.fire({
           icon: 'error',
           title: 'PERDISTE',
@@ -82,6 +80,7 @@ export class AhorcadoComponent implements OnInit {
         setTimeout(() => {
           this.imagen = "./../../../assets/img/Ahorcado01.png";
           this.contFallas = 0;
+          this.letra = '';
         }, 1500);
 
       }
@@ -98,10 +97,11 @@ export class AhorcadoComponent implements OnInit {
       this.actualizarPalabrta();
       this.crearGuiones();
       this.contFallas = 0;
+      this.letra = '';
     }
 
     this.flag = true;
-    this.letra = '';
+
     }//
 
 
@@ -118,10 +118,6 @@ export class AhorcadoComponent implements OnInit {
   replaceAt(index:any, character:string, palabra:string) {
      return palabra.substr(0, index) + character + palabra.substr(index+character.length); 
     } 
-
-  click(letra:string){
-    this.letra = letra;
-  }
 
 
 }//

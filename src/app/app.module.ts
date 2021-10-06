@@ -16,6 +16,8 @@ import { AhorcadoComponent } from './juegos/ahorcado/ahorcado.component';
 import { MayormenorComponent } from './juegos/mayormenor/mayormenor.component';
 import { PreguntadosComponent } from './juegos/preguntados/preguntados.component';
 import { MijuegoComponent } from './juegos/mijuego/mijuego.component';
+import { ChatComponent } from './chat/chat.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -28,11 +30,13 @@ import { MijuegoComponent } from './juegos/mijuego/mijuego.component';
     AhorcadoComponent,
     MayormenorComponent,
     PreguntadosComponent,
-    MijuegoComponent
+    MijuegoComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     ReactiveFormsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
