@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { JuegosService } from 'src/app/services/juegos.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -34,7 +35,14 @@ export class MayormenorComponent implements OnInit {
   imgJugador:any;
   flag=false;
 
-  constructor(public afAuth: AngularFireAuth,private router:Router) { }
+  jugador = {
+    email: '',
+    ganadas: 0,
+    perdidas: 0
+  }
+  jugadores:any | [];
+
+  constructor(public afAuth: AngularFireAuth,private router:Router,private juegoDB:JuegosService) { }
 
   async ngOnInit() {
     this.imgJugador = null;
@@ -49,9 +57,73 @@ export class MayormenorComponent implements OnInit {
         })
         this.router.navigate(['/login'])
         }
+        else{
+          this.user = user;
+          this.jugador.email = this.user.email;
+        }
     })
+    this.obtenerValoresJugadores()
   }
 
+  obtenerValoresJugadores(){
+    this.juegoDB.getAll('mayorMenor').then(refDB=>{
+      refDB?.subscribe(refjugadores =>{
+        //console.log(refMensajes)
+        this.jugadores = refjugadores.map(refJugador =>{
+
+          let jugador = refJugador.payload.doc.data();
+
+          return jugador
+        })
+        if(this.jugadores){
+          for (let i = 0; i < this.jugadores.length; i++) {
+            if(this.jugadores[i].email == this.jugador.email){
+              this.jugador.ganadas = this.jugadores[i].ganadas;
+              this.jugador.perdidas = this.jugadores[i].perdidas;
+            }
+          }
+          console.log(this.jugador)
+        }
+      })
+
+    })
+  }//
+
+  agregarPuntajeDB(){
+    let existe = true;
+        for (let i = 0; i < this.jugadores.length; i++) {
+          if(this.jugadores[i].email == this.jugador.email){
+             //YA EXISTE EL JUGADOR AGREGAR DATOS NUEVOS MODIFICAR
+             this.juegoDB.update('mayorMenor', this.jugador.email, this.jugador)
+             .then(res =>{
+              console.log(res)
+              //aca hago lo que quiero
+              //toast('Se creo usuario Correctamente', 3000)  AGREGAR EL CREAR DATOS EN LA TABLA
+            })
+            .catch(err =>{
+              console.log('error en alta', err)
+            })
+            existe = true;
+            break;
+          }else{
+            existe = false;
+          }
+          
+        }
+        if(!existe){
+              // SI NO EXISTE CREARLO Y ASIGNAR PUNTOS
+              this.juegoDB.create('mayorMenor',this.jugador)
+              .then(res =>{
+                console.log(res)
+                //aca hago lo que quiero
+                //toast('Se creo usuario Correctamente', 3000)  AGREGAR EL CREAR DATOS EN LA TABLA
+              })
+              .catch(err =>{
+                console.log('error en alta', err)
+              })
+        }
+
+  }//
 
   mayor(){
     
@@ -65,6 +137,8 @@ export class MayormenorComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500
             })
+            this.jugador.ganadas++
+            this.agregarPuntajeDB()
            }
 
           if(this.numJugador < this.cartaActual){
@@ -75,6 +149,8 @@ export class MayormenorComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500
             })
+            this.jugador.perdidas++
+            this.agregarPuntajeDB()
           }
 
           if(this.numJugador == this.cartaActual){
@@ -105,6 +181,8 @@ export class MayormenorComponent implements OnInit {
                   showConfirmButton: false,
                   timer: 1500
                 })
+                this.jugador.perdidas++
+                this.agregarPuntajeDB()
                }
     
               if(this.numJugador < this.cartaActual){
@@ -115,6 +193,8 @@ export class MayormenorComponent implements OnInit {
                   showConfirmButton: false,
                   timer: 1500
                 })
+                this.jugador.ganadas++
+                this.agregarPuntajeDB()
               }
     
               if(this.numJugador == this.cartaActual){

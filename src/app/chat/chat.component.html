@@ -1,7 +1,7 @@
-<div class="page-content page-container" id="page-content">
-    <div class="padding">
-        <div class="row container d-flex justify-content-center">
-            <div class="col-md-12">
+<div class="page-content page-container" id="page-content" >
+    <div class="padding" >
+        <div class="row container d-flex justify-content-center " >
+            <div class="col-md-12" >
                 <div class="box box-warning direct-chat direct-chat-warning">
                     <div class="box-header with-border">
                         <h3 class="box-title mx-5">SALA DE CHATS</h3>
@@ -11,30 +11,38 @@
                         </div>
                         <div class="box-body">
                             <div class="direct-chat-messages">
-                                <ul>
+                                <ul style="list-style: none;">
                                     <li *ngFor="let mensaje of mensajes">
                                       
-                                        <div class="direct-chat-msg">
+                                        <div 
+                                        [ngClass]="{'direct-chat-msg right': mensaje.email == msj.email,
+                                                    'direct-chat-msg ': mensaje.email !== msj.email} "
+                                      
+                                        >
                                             <div class="direct-chat-info clearfix">
-                                                <span class="direct-chat-name pull-left">{{mensaje.nombre}}</span>
-                                                <span class="direct-chat-timestamp pull-right">{{ mensaje.fecha | date:'medium' }} </span>
+                                                <span
+                                                    [ngClass]="{'direct-chat-name pull-left': mensaje.email == msj.email,
+                                                    'direct-chat-name pull-right': mensaje.email !== msj.email} "
+                                                >
+                                                        {{mensaje.nombre}}
+                                                </span>
+                                                <span
+                                                [ngClass]="{'direct-chat-timestamp pull-left': mensaje.email == msj.email,
+                                                'direct-chat-name pull-right': mensaje.email !== msj.email} "
+                                                >
+                                                 {{ mensaje.fecha | date:'medium' }}
+                                                 </span>
                                             </div> 
-                                            <img class="direct-chat-img" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="message user image">
+                                            <img class="direct-chat-img"
+                                                 src="https://img.icons8.com/color/36/000000/administrator-male.png"
+                                                 alt="message user image">
                                             <div class="direct-chat-text"> 
                                                 {{ mensaje.msj}} 
                                             </div>
                                         </div>
+
                                         <!-- mensajes de otros usuarios-->
-                                        <div class="direct-chat-msg">
-                                            <div class="direct-chat-info clearfix">
-                                                <span class="direct-chat-name pull-left">Timona Siera</span> 
-                                                <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span> 
-                                            </div>
-                                                <img class="direct-chat-img" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="message user image">
-                                            <div class="direct-chat-text">
-                                                For what reason would it be advisable for me to think about business content? 
-                                            </div>
-                                        </div>
+         
                                         
                                     </li>
                                 </ul>
@@ -61,7 +69,7 @@
                         <div class="box-footer">
                             <form action="#" method="post">
                                 <div class="input-group">
-                                    <input [(ngModel)]="mensaje.msj" type="text" name="message" placeholder="Type Message ..." class="form-control">
+                                    <input [(ngModel)]="msj.msj" type="text" name="message" placeholder="Type Message ..." class="form-control">
                                     <span class="input-group-btn">
                                         <button (click)="altaMsj()" type="button" class="btn btn-warning btn-flat">Send</button>
                                     </span>

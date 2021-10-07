@@ -13,12 +13,13 @@ import { UsuarioService } from '../services/usuario.service';
 })
 export class ChatComponent implements OnInit {
 
-  mensaje = {
+  msj = {
     email: '',
     nombre: '',
     msj: '',
     fecha: ''
   }
+  
   contadorMensajes = 0;
   user:any;
   mensajes:any[] = [];
@@ -33,12 +34,13 @@ export class ChatComponent implements OnInit {
 
     await this.afAuth.onAuthStateChanged(user =>{
       if(user){
-        this.mensaje.email = user.email || '';
+        this.user = user;
+        this.msj.email = user.email || '';
         this.cargarUsuario()
       }
      })
-
-     this.obtenerChats();
+    this.obtenerChats();
+   
   }
 
    cargarUsuario(){
@@ -46,13 +48,13 @@ export class ChatComponent implements OnInit {
        refDB?.subscribe(refUsers=>{
           refUsers.forEach(usuario=>{
             this.user = usuario.payload.doc.data()
-            if(this.user.email == this.mensaje.email){
-              this.mensaje.nombre = this.user.nombre
+            if(this.user.email == this.msj.email){
+              this.msj.nombre = this.user.nombre
             }
           })
        })
      })
-     console.log(this.mensaje)
+     console.log(this.msj)
   }
 
   obtenerChats(){
@@ -62,18 +64,24 @@ export class ChatComponent implements OnInit {
         this.mensajes = refMensajes.map(refMsj =>{
           this.contadorMensajes++;
           let msj = refMsj.payload.doc.data();
+          //console.log(msj)
           return msj
         })
-       // console.log(this.mensajes)
+        console.log(this.mensajes)
+        this.mensajes.sort()
+        console.log(this.mensajes)
+  
       })
     })
+
   }
 
 
   altaMsj(){
-    this.mensaje.fecha = Date.now().toString();
-    this.dbChar.create("CHATS", this.mensaje).then(res =>{
+    this.msj.fecha = Date.now().toString();
+    this.dbChar.create("CHATS", this.msj).then(res =>{
       console.log(res);
+     
     })
     .catch(err =>{
       console.log("error en alta mensaje", err);

@@ -12,10 +12,8 @@ export class AppComponent implements OnInit{
   public isLogged = false;
   title = 'saladejuegos';
   userActual:any;
-  admin = {
-    email: "admin@admin.com",
-    pass: "111111"
-  }
+  coincide = false;
+
   constructor(private authSvc:AuthService, public afAuth: AngularFireAuth, private userService:UsuarioService) { }
 
   async ngOnInit() {
@@ -25,11 +23,14 @@ export class AppComponent implements OnInit{
         this.userService.getAll('users').then(refDB=>{
           refDB?.subscribe(refUsers=>{
              refUsers.forEach(usuario=>{
-               this.userActual = usuario.payload.doc.data()
-                if(user.email == this.userActual.email){
+               if(!this.coincide){
+                this.userActual = usuario.payload.doc.data()
+               }
+              if(user.email == this.userActual.email){
                   //console.log(this.userActual)
+                  this.coincide = true
                   return;
-                }
+              }
              })
           })
         })
@@ -44,7 +45,11 @@ export class AppComponent implements OnInit{
  onLogout(){
    this.authSvc.logout();
    this.isLogged= false;
+   this.coincide = false;
+   this.userActual = null;
  }
+
+
  accesoRapido(id:number){
   if(id == 0){
     

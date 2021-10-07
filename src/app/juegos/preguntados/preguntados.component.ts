@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
+import { JuegosService } from 'src/app/services/juegos.service';
 import Swal from 'sweetalert2';
 //import {}from  './preguntas.js';
 
@@ -78,15 +81,66 @@ export class PreguntadosComponent implements OnInit {
   preguntas_correctas = 0
   preguntas_incorrectas = 0;
 
+  jugador = {
+    email: '',
+    ganadas: 0,
+    perdidas: 0
+  }
+  jugadores:any | [];
+  user:any;
 
-  constructor() { }
+  constructor(private juegoDB:JuegosService,public afAuth: AngularFireAuth,private router:Router) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+
+    this.user = await this.afAuth.onAuthStateChanged(user =>{
+      if(!user){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'warning',
+          title: 'Ingresa tu usuario',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        this.router.navigate(['/login'])
+        }else{
+          this.user = user;
+          this.jugador.email = this.user.email;
+        }
+    })
   /*  this.base_preguntas = this.readText("preguntas.json")
     this.interprete_bp = JSON.parse(this.base_preguntas)
     this.escogerPreguntaAleatoria()*/
+
     this.escogerPreguntaAleatoria()
+    this.obtenerValoresJugadores()
   }
+
+  
+  obtenerValoresJugadores(){
+    this.juegoDB.getAll('preguntados').then(refDB=>{
+      refDB?.subscribe(refjugadores =>{
+        //console.log(refMensajes)
+        this.jugadores = refjugadores.map(refJugador =>{
+
+          let jugador = refJugador.payload.doc.data();
+
+          return jugador
+        })
+        if(this.jugadores){
+          for (let i = 0; i < this.jugadores.length; i++) {
+            if(this.jugadores[i].email == this.jugador.email){
+              this.jugador.ganadas = this.jugadores[i].ganadas;
+              this.jugador.perdidas = this.jugadores[i].perdidas;
+            }
+          }
+          console.log(this.jugador)
+        }
+      })
+
+    })
+  }//
+
 
 
   elegirPregunta(n:number){
@@ -140,7 +194,10 @@ escogerPreguntaAleatoria() {
           showConfirmButton: false,
           timer: 1500
         })
+        this.jugador.ganadas++
+        
         this.escogerPreguntaAleatoria()
+        this.agregarPuntajeDB()
       }else{
         Swal.fire({
           icon: 'warning',
@@ -148,12 +205,49 @@ escogerPreguntaAleatoria() {
           showConfirmButton: false,
           timer: 1500
         })
+        this.jugador.perdidas++
+  
         this.escogerPreguntaAleatoria()
+        this.agregarPuntajeDB()
       }
   }
 
 
+  agregarPuntajeDB(){
+    let existe = true;
+        for (let i = 0; i < this.jugadores.length; i++) {
+          if(this.jugadores[i].email == this.jugador.email){
+             //YA EXISTE EL JUGADOR AGREGAR DATOS NUEVOS MODIFICAR
+             this.juegoDB.update('preguntados', this.jugador.email, this.jugador)
+             .then(res =>{
+              console.log(res)
+              //aca hago lo que quiero
+              //toast('Se creo usuario Correctamente', 3000)  AGREGAR EL CREAR DATOS EN LA TABLA
+            })
+            .catch(err =>{
+              console.log('error en alta', err)
+            })
+            existe = true;
+            break;
+          }else{
+            existe = false;
+          }
+          
+        }
+        if(!existe){
+              // SI NO EXISTE CREARLO Y ASIGNAR PUNTOS
+              this.juegoDB.create('preguntados',this.jugador)
+              .then(res =>{
+                console.log(res)
+                //aca hago lo que quiero
+                //toast('Se creo usuario Correctamente', 3000)  AGREGAR EL CREAR DATOS EN LA TABLA
+              })
+              .catch(err =>{
+                console.log('error en alta', err)
+              })
+        }
 
+  }//
 
 
 

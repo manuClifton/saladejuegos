@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
           timer: 1500
         })
         this.router.navigate(['/home'])
+        window.location.reload()
       }
    } catch (error) {
     Swal.fire({
