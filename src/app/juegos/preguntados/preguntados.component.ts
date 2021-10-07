@@ -52,7 +52,47 @@ export class PreguntadosComponent implements OnInit {
           "incorrecta3": "Bogotá\r",
           "imagen": "https://i.ibb.co/zfM2Vyd/paul-auster.jpg",
           "objectFit": "cover"
-      }
+      },
+      {
+        "categoria": "Arte y literatura",
+        "pregunta": "Escritor de \"El viejo y el mar\"",
+        "respuesta": "Ernest Hemingway",
+        "incorrecta1": "Julio Verne",
+        "incorrecta2": "Gabriel García Márquez",
+        "incorrecta3": "Ernesto Sábato\r",
+        "imagen": "https://i.ibb.co/WHd1NnL/el-viejo-y-el-mar.jpg",
+        "objectFit": "cover"
+    },
+    {
+        "categoria": "Arte y literatura",
+        "pregunta": "Vivía en el 221B de Backer Street.",
+        "respuesta": "Sherlock Holmes",
+        "incorrecta1": "Katniss Everdeen",
+        "incorrecta2": "Hermione Jean Granger",
+        "incorrecta3": "Harry James Potter \r",
+        "imagen": "https://i.ibb.co/SPqsRyx/221b.jpg",
+        "objectFit": "cover"
+    },
+    {
+        "categoria": "Arte y literatura",
+        "pregunta": "Género al que pertenece la novela \"La historia del ojo\" de George Bataille",
+        "respuesta": "Erótico",
+        "incorrecta1": "Drama",
+        "incorrecta2": "Terror",
+        "incorrecta3": "Suspenso\r",
+        "imagen": "https://i.ibb.co/dgfv8zK/el-ojo.gif",
+        "objectFit": "cover"
+    },
+    {
+        "categoria": "Arte y literatura",
+        "pregunta": "Es una figura clave del dadaísmo y el surrealismo.",
+        "respuesta": "Max Ernst",
+        "incorrecta1": "Pablo Picasso",
+        "incorrecta2": "Vincent Van Gogh",
+        "incorrecta3": "Claude Monet\r",
+        "imagen": "https://i.ibb.co/dLw3jng/Dada-min-e1533749290497.jpg",
+        "objectFit": "cover"
+    }
 ];
   pregunta = "";
   categoria = "";
@@ -213,6 +253,8 @@ escogerPreguntaAleatoria() {
   }
 
 
+
+
   agregarPuntajeDB(){
     let existe = true;
         for (let i = 0; i < this.jugadores.length; i++) {
@@ -248,8 +290,6 @@ escogerPreguntaAleatoria() {
         }
 
   }//
-
-
 
 
 

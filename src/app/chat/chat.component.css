@@ -307,11 +307,12 @@
     color: #fff
 }
 
+/*
 .right .direct-chat-text {
-    margin-right: 50px;
+    margin-right: 0px;
     margin-left: 0
 }
-
+*/
 .box-footer {
     border-top-left-radius: 0;
     border-top-right-radius: 0;

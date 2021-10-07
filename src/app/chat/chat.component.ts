@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AppComponent } from '../app.component';
 import { ChatService } from '../services/chat.service';
 import { UsuarioService } from '../services/usuario.service';
 

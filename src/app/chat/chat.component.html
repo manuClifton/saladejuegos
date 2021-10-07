@@ -15,8 +15,8 @@
                                     <li *ngFor="let mensaje of mensajes">
                                       
                                         <div 
-                                        [ngClass]="{'direct-chat-msg right': mensaje.email == msj.email,
-                                                    'direct-chat-msg ': mensaje.email !== msj.email} "
+                                        [ngClass]="{'direct-chat-msg left': mensaje.email == msj.email,
+                                                    'direct-chat-msg right': mensaje.email !== msj.email} "
                                       
                                         >
                                             <div class="direct-chat-info clearfix">
@@ -33,9 +33,11 @@
                                                  {{ mensaje.fecha | date:'medium' }}
                                                  </span>
                                             </div> 
+                                               <!-- 
                                             <img class="direct-chat-img"
                                                  src="https://img.icons8.com/color/36/000000/administrator-male.png"
                                                  alt="message user image">
+                                                 -->
                                             <div class="direct-chat-text"> 
                                                 {{ mensaje.msj}} 
                                             </div>
