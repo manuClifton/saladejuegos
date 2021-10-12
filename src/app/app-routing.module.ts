@@ -4,10 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { QuiensoyComponent } from './quiensoy/quiensoy.component';
 import { RegisterComponent } from './register/register.component';
-import { AhorcadoComponent } from './juegos/ahorcado/ahorcado.component';
-import { MayormenorComponent } from './juegos/mayormenor/mayormenor.component';
-import { PreguntadosComponent } from './juegos/preguntados/preguntados.component';
-import { MijuegoComponent } from './juegos/mijuego/mijuego.component';
+
 import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
