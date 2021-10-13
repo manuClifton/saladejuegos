@@ -65,6 +65,19 @@ export class LoginComponent implements OnInit {
      console.log(error);
    }
   }
-
+  accesoRapido(id:number){
+      if(id == 0){
+        this.loginForm.value.email = 'admin@admin.com';
+        this.loginForm.value.password = '000000';
+      }
+      if(id == 1){
+        this.loginForm.value.email = 'usuario1@usuario1.com';
+        this.loginForm.value.password = '111111'
+      }
+      if(id == 2){
+        this.loginForm.value.email = 'usuario2@usuario2.com';
+        this.loginForm.value.password = '222222'
+      }
+  }
 
 }//

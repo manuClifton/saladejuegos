@@ -5,9 +5,14 @@
       <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
         <input type="text" id="login" class="fadeIn second"
                name="login" placeholder="Email"
-               
-                formControlName="email">
-        <input type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña" formControlName="password">
+                formControlName="email"
+                [(ngModel)]="loginForm.value.email"
+                >
+        <input type="text" id="password" class="fadeIn third"
+               name="login" placeholder="Contraseña"
+                formControlName="password"
+                [(ngModel)]="loginForm.value.password"
+                >
         <input type="submit" class="fadeIn fourth" value="Entrar">
       </form>
   
@@ -22,4 +27,22 @@
   
     </div>
   </div>
+
+  <div id="div-totop" class="cmn-divfloat">
+   <!-- <a href="#span-top" class="btn btn-primary cmn-btncircle">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+-->
+<div class="btn-group border-2" role="group">
+  <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    acceso rapido
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+    <li><a class="dropdown-item" (click)='accesoRapido(0)'>admin</a></li>
+    <li><a class="dropdown-item" (click)='accesoRapido(1)'>usuario1</a></li>
+    <li><a class="dropdown-item" (click)='accesoRapido(2)'>usuario2</a></li>
+  </ul>
+</div>
+
+</div>
 

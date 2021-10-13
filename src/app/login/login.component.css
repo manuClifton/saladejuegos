@@ -265,3 +265,20 @@ input[type=text]:placeholder {
 * {
   box-sizing: border-box;
 }
+
+/* boton flotante*/
+
+.cmn-divfloat {
+  position: fixed !important;
+  top: 5vw;
+  right: 15px;
+  /*display: none;*/
+}
+.cmn-btncircle {
+  width: 40px !important;
+  height: 40px !important;
+  padding: 6px 0px;
+  border-radius: 15px;
+  font-size: 18px;
+  text-align: center;
+}
