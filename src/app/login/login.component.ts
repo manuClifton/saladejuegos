@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
     email: new FormControl('',Validators.required),
     password: new FormControl('', Validators.min(6))
   })
+  email = '';
+  password = '';
 
   constructor(private authSvc:AuthService, private router:Router, public afAuth: AngularFireAuth ) { }
 
@@ -67,16 +69,16 @@ export class LoginComponent implements OnInit {
   }
   accesoRapido(id:number){
       if(id == 0){
-        this.loginForm.value.email = 'admin@admin.com';
-        this.loginForm.value.password = '000000';
+        this.email = 'admin@admin.com'
+        this.password = '000000'
       }
       if(id == 1){
-        this.loginForm.value.email = 'usuario1@usuario1.com';
-        this.loginForm.value.password = '111111'
+        this.email = 'usuario1@usuario1.com'
+        this.password = '111111'
       }
       if(id == 2){
-        this.loginForm.value.email = 'usuario2@usuario2.com';
-        this.loginForm.value.password = '222222'
+        this.email = 'usuario2@usuario2.com'
+        this.password = '222222'
       }
   }
 
