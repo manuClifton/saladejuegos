@@ -56,8 +56,7 @@ export class MayormenorComponent implements OnInit {
           timer: 1500
         })
         this.router.navigate(['/login'])
-        }
-        else{
+        }else{
           this.user = user;
           this.jugador.email = this.user.email;
         }
@@ -119,7 +118,7 @@ export class MayormenorComponent implements OnInit {
                 //toast('Se creo usuario Correctamente', 3000)  AGREGAR EL CREAR DATOS EN LA TABLA
               })
               .catch(err =>{
-                console.log('error en alta', err)
+                console.log('error en alta puntos mayorMenor', err)
               })
         }
 

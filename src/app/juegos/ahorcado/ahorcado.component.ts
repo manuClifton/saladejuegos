@@ -191,7 +191,7 @@ export class AhorcadoComponent implements OnInit {
                   //toast('Se creo usuario Correctamente', 3000)  AGREGAR EL CREAR DATOS EN LA TABLA
                 })
                 .catch(err =>{
-                  console.log('error en alta', err)
+                  console.log('error en alta puntos Ahorcado', err)
                 })
           }
 

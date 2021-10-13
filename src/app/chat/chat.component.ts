@@ -13,6 +13,7 @@ import { UsuarioService } from '../services/usuario.service';
 export class ChatComponent implements OnInit {
 
   msj = {
+
     email: '',
     nombre: '',
     msj: '',
@@ -31,7 +32,7 @@ export class ChatComponent implements OnInit {
 
    async ngOnInit() {
 
-    await this.afAuth.onAuthStateChanged(user =>{
+  await this.afAuth.onAuthStateChanged(user =>{
       if(user){
         this.user = user;
         this.msj.email = user.email || '';
@@ -39,8 +40,7 @@ export class ChatComponent implements OnInit {
       }
      })
     this.obtenerChats();
-   
-  }
+  }//
 
    cargarUsuario(){
      this.userService.getAll('users').then(refDB=>{
@@ -66,10 +66,10 @@ export class ChatComponent implements OnInit {
           //console.log(msj)
           return msj
         })
-        console.log(this.mensajes)
-        this.mensajes.sort()
-        console.log(this.mensajes)
-  
+        if(this.mensajes){
+          this.mensajes.sort();
+        }
+        console.log(this.mensajes)    
       })
     })
 
