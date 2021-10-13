@@ -64,15 +64,24 @@ export class ChatComponent implements OnInit {
           this.contadorMensajes++;
           let msj = refMsj.payload.doc.data();
           //console.log(msj)
-          return msj
+          return msj;
         })
         if(this.mensajes){
-          this.mensajes.sort();
+          let fecha;
+         for (let i = 0; i < this.mensajes.length -1; i++) {
+           for (let j = i+1; j < this.mensajes.length; j++) {
+             if(this.mensajes[i].fecha > this.mensajes[j].fecha){
+              fecha = this.mensajes[i];
+              this.mensajes[i] = this.mensajes[j]
+              this.mensajes[j] = fecha;
+             }  
+           }
+         }
+         //console.log(fecha)
         }
-        console.log(this.mensajes)    
+        //console.log(this.mensajes)    
       })
     })
-
   }
 
 
