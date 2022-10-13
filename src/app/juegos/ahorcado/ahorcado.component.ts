@@ -37,7 +37,10 @@ export class AhorcadoComponent implements OnInit {
   }
   jugadores:any | [];
 
-  constructor(public afAuth: AngularFireAuth,private router:Router,private juegoDB:JuegosService) { }
+  constructor(public afAuth: AngularFireAuth,
+            private router:Router
+            ,private juegoDB:JuegosService
+            ) { }
 
   async ngOnInit() {
 

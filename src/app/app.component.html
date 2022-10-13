@@ -25,6 +25,9 @@
           <a routerLink="/chat"class="nav-link" data-target="login">CHAT</a>
         </li>
         <li *ngIf="isLogged"  class="nav-item">
+          <a routerLink="/encuesta" class="nav-link" data-target="registro">Encuesta</a>
+        </li>
+        <li *ngIf="isLogged"  class="nav-item">
           <a class="nav-link " data-target="email">{{userActual.email}}</a>
         </li>
         <li *ngIf="!isLogged"  class="nav-item">

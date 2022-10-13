@@ -18,6 +18,7 @@ import { PreguntadosComponent } from './juegos/preguntados/preguntados.component
 import { MijuegoComponent } from './juegos/mijuego/mijuego.component';
 import { ChatComponent } from './chat/chat.component';
 import { RouterModule } from '@angular/router';
+import { EncuestaComponent } from './encuesta/encuesta.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { RouterModule } from '@angular/router';
     MayormenorComponent,
     PreguntadosComponent,
     MijuegoComponent,
-    ChatComponent
+    ChatComponent,
+    EncuestaComponent
   ],
   imports: [
     BrowserModule,

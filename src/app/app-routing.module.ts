@@ -1,3 +1,4 @@
+import { EncuestaComponent } from './encuesta/encuesta.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'quien-soy', component: QuiensoyComponent  },
   { path: 'chat', component: ChatComponent },
+  { path: 'encuesta', component: EncuestaComponent },
   { path: 'juegos', 
     loadChildren: () =>import('../app/juegos/routing.module').then(m => m.RoutingModule)
   },

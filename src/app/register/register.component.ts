@@ -33,7 +33,13 @@ export class RegisterComponent implements OnInit {
       return;
     }
     if(password != password2){
-      console.log("NO COINCIDEN LAS CONTRASEÑAS");
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Contraseñas no coinciden',
+        showConfirmButton: false,
+        timer: 1500
+      })
       return;
     }
 
