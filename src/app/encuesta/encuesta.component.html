@@ -1,70 +1,7 @@
 
 
-<div class="col-md-8 order-md-1 bg-black border-3 ">
+<div class="col-md-8 order-md-1 bg-opacity-75 bg-black">
     <h4 class="mb-3 mx-5" style="color:antiquewhite;">ENCUESTA:</h4>
- <!--   <form class="needs-validation" [formGroup]="altaForm" (ngSubmit)="enviarEncuesta()">
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="firstName">Nombre</label>
-            <input formControlName="nombre" type="text" class="form-control" id="firstName" placeholder="" value="" required>
-            <div *ngIf="altaForm.get('nombre')?.hasError('required') && altaForm.get('nombre')?.touched" 
-                class="form-text">El Nombere es requerido
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="lastName">DNI</label>
-            <input  formControlName="apellido" type="text" class="form-control" id="lastName" placeholder="DNI" value="" required>
-            <div *ngIf="altaForm.get('apellido')?.hasError('required') && altaForm.get('apellido')?.touched" 
-                class="form-text">El DNI es requerido
-            </div>
-          </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-6 mb-3">
-            <label for="email">Email</label>
-            <input  formControlName="edad" type="email" class="form-control" id="email" placeholder="you@example.com">
-            <div *ngIf="altaForm.get('edad')?.hasError('required') && altaForm.get('edad')?.touched" 
-                class="form-text">El email es requerido
-            </div>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="number">Edad </label>
-                <input formControlName="telefono" type="number" class="form-control" id="email" placeholder="EDAD">
-                <div *ngIf="altaForm.get('telefono')?.hasError('required') && altaForm.get('telefono')?.touched" 
-                class="form-text">El edad es requerido
-                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-6 mb-3">
-                <label for="">Unidad Propia</label>
-                <select  class="custom-select d-block w-100" formControlName="respuesta1" required>
-                    <option value="true">si</option>
-                    <option value="false">no</option>
-                  </select>
-            </div>
-        </div>
-
-
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="firstName">Pais</label>
-            <input formControlName="respuesta2" type="text" class="form-control" id="nacionalidad" placeholder="nacionalidad" value="" required>
-            <div *ngIf="altaForm.get('nacionalidad')?.hasError('required') && altaForm.get('nacionalidad')?.touched" 
-                class="form-text">El PAIS es requerido
-            </div>
-          </div>
-        </div>
-  
-
-        <hr class="mb-4">
-        <button [disabled]="!altaForm.valid" class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-      </form>-->
-
 
        <form class="needs-validation p-2" [formGroup]="altaForm" (ngSubmit)="enviarEncuesta()">
       <div class="row">
@@ -100,10 +37,11 @@
               <label for="number">Telefono</label>
               <input formControlName="telefono" type="number" class="form-control" id="telefono" placeholder="2966154748" required>
               <div *ngIf="altaForm.get('telefono')?.hasError('required') && altaForm.get('telefono')?.touched" 
-                class="form-text">El Telefono es requerido
-               </div>
-               <div *ngIf="altaForm.get('telefono')?.hasError('maxLength') && altaForm.get('telefono')?.touched" 
+                class="form-text">El Telefono es requerido</div>
+               <div *ngIf="altaForm.get('telefono')?.hasError('tieneDies') && altaForm.get('telefono')?.touched" 
                id="telefono" class="form-text">Maximo 10 numeros</div>
+               <div *ngIf="altaForm.get('email')?.hasError('tieneLetra') && altaForm.get('email')?.touched" 
+               class="form-text">Solo adminte numeros</div>
           </div>
       </div>
 

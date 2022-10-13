@@ -26,10 +26,10 @@ export class EncuestaComponent implements OnInit {
       nombre: ['',[Validators.required]],
       apellido: ['',[Validators.required]],
       edad: ['',[Validators.required, this.validarEdad]],
-      telefono: ['',[Validators.required, Validators.maxLength(10)]],
+      telefono: ['',[Validators.required,this.validarTelefonoCantidad, this.validarTelefono]],
       respuesta1: ['',[Validators.required]],
       respuesta2: ['',[Validators.required]],
-      respuesta3: ['',[Validators.required]],
+      respuesta3: ['', [Validators.required]],
     });
   }
 
@@ -52,7 +52,24 @@ export class EncuestaComponent implements OnInit {
   }
 
 
-  
+  validarTelefono(control:AbstractControl){
+    const telefono = control.value;
+    const tieneLetra = telefono.includes(',');
+    if(tieneLetra){
+      return {tieneLetra: true}
+    }else{
+      return null;
+    }
+  }
+  validarTelefonoCantidad(control:AbstractControl){
+    const telefono = control.value;
+    const tieneDies = telefono.length;
+    if(tieneDies > 10){
+      return {tieneDies: true}
+    }else{
+      return null;
+    }
+  }
   validarEdad(control:AbstractControl){
     const edad= control.value;
     //const edad = this.altaForm.controls['edad'].value;
